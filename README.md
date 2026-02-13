@@ -68,21 +68,35 @@ struct MapExplorer: View {
 **Note:** be careful to handle propagation to `sheet`, `fullScreenCover` and other detached view hierarchies.
 ### 2. Smart Scaled Metric and Scaled Image
 ```swift
-// Scale the frame of the View according to @ScaleMetric and @Environment(\.dynamicTypeSize)
+// Scales the frame of the View according to @ScaleMetric and @Environment(\.dynamicTypeSize)
 SomeView()
-    .scaledMetricSize(size: .init(width: 28, height: 28), relativeTo: .body)
+    .scaledMetricsSize(size: .init(width: 28, height: 28), relativeTo: .body)
 
 
 // Scales the view frame size to a relative size according to \.imageScale
 ZStack {
     RoundedRectangle(cornerRadius: 16)
+        .fill(Color.pink)
         .aspectRatio(1.0, contentMode: .fill)
 
-    Image(systemName: "crown.fill")
+    Image(systemName: "person.fill")
         .font(.system(size: 22))
+        .foregroundStyle(.background)
 }
-.scaledImageContainer(baseFontSize: 22)
+.scaledContainer(baseFontSize: 22)
 ```
+This package provides also a ready to use `ScaledConteiner`
+```swift
+ScaledContainer(baseFontSize: 64) {
+    RoundedRectangle(cornerRadius: 30)
+        .fill(Color.pink)
+        .aspectRatio(1.0, contentMode: .fill)
+} content: {
+    Image(systemName: "person.fill")
+        .font(.system(size: 64))
+        .foregroundStyle(.background)
+}
+``` 
 ### 3. Damped Padding
 Applies "intelligent" padding that scales using a square-root function. This allows the UI to breathe without letting margins become disproportionate at high AX sizes.
 ```swift
