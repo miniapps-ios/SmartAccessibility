@@ -6,7 +6,7 @@ public extension View {
     /// - Parameters:
     ///   - size: the size to scale.
     ///   - textStyle: the ancor system style.
-    func scaledMetricSize(
+    func scaledMetricsSize(
         size: CGSize,
         relativeTo textStyle: Font.TextStyle = .body
     ) -> some View {

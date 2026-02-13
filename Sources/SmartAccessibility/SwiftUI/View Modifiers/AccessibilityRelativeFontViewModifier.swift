@@ -11,7 +11,7 @@ public extension View {
     func accessibilityRelativeFont(
         familyName: String = "",
         fontSize: CGFloat,
-        fontWeight: Font.Weight?,
+        fontWeight: Font.Weight? = nil,
         textStyle: Font.TextStyle = .body
     ) -> some View {
         modifier(
