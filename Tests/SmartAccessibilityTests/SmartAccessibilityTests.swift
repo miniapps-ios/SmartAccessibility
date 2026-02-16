@@ -1,5 +1,5 @@
 import Testing
-import Foundation
+import SwiftUI
 @testable import SmartAccessibility
 
 struct ScaledMetricSizeTests {
@@ -60,5 +60,14 @@ struct ScaledMetricSizeTests {
         // Height: 50 + (25 * 0.3) = 57.5
         #expect(result.width == 115.0)
         #expect(result.height == 57.5)
+    }
+    
+    @Test("Validate TypographyScaler")
+    func testTyporaphyScaler() {
+        let effectiveSize: DynamicTypeSize = .xSmall
+        let scaler: TypographyScaler = .init(dynamicTypeSize: effectiveSize)
+        let scaledHeight: CGFloat = scaler.make(with: .caption2)
+        print("scaled height \(scaledHeight)")
+        #expect(scaledHeight != 600.0)
     }
 }

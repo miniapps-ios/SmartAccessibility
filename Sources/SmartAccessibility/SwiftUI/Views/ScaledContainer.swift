@@ -37,14 +37,25 @@ public struct ScaledContainer<Container: View, Content: View>: View {
 }
 
 #Preview {
-    ScaledContainer(baseFontSize: 64) {
-        RoundedRectangle(cornerRadius: 30)
-            .fill(Color.pink)
-            .aspectRatio(1.0, contentMode: .fill)
-    } content: {
-        Image(systemName: "person.fill")
-            .font(.system(size: 64))
-            .foregroundStyle(.background)
+    VStack(spacing: 30) {
+        ScaledContainer(baseFontSize: 64) {
+            RoundedRectangle(cornerRadius: 30)
+                .fill(Color.pink)
+                .aspectRatio(1.0, contentMode: .fill)
+        } content: {
+            Image(systemName: "person.fill")
+                .font(.system(size: 64))
+                .foregroundStyle(.background)
+        }
+        .environment(\.imageScale, .large)
+        
+        ScaledContainer(baseFontSize: 22) {
+            Capsule()
+                .fill(Color.pink)
+        } content: {
+            Text("Edit")
+                .font(.system(size: 22))
+                .foregroundStyle(.background)
+        }
     }
-    .environment(\.imageScale, .large)
 }
