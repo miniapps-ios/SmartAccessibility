@@ -114,6 +114,14 @@ public struct ScaledContainer<Container: View, Content: View>: View {
                     Capsule().fill(Color.pink)
                 }
             
+            Text("Subheadline")
+                .font(.subheadline.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .subheadline)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
             Text("Footnote")
                 .font(.footnote.bold())
                 .foregroundStyle(.background)
