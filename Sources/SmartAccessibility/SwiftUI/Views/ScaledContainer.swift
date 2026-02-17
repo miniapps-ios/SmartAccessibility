@@ -52,19 +52,27 @@ public struct ScaledContainer<Container: View, Content: View>: View {
         Text("Edit")
             .font(.system(size: 22, weight: .medium))
             .foregroundStyle(.background)
-            .padding(.horizontal)
             .scaledHeightContainer(baseFontSize: 22)
             .background {
                 Capsule().fill(Color.pink)
             }
         
         Text("Done")
-            .font(.title2.bold())
+            .font(.title.bold())
             .foregroundStyle(.background)
-            .padding(.horizontal)
-            .smartHeightContainer(textStyle: .title2)
+            .smartHeightContainer(textStyle: .title)
             .background {
                 Capsule().fill(Color.pink)
             }
+            .environment(\.dynamicTypeSize, .accessibility5)
+        
+        Text("Continue")
+            .font(.caption2.bold())
+            .foregroundStyle(.background)
+            .smartHeightContainer(textStyle: .caption2)
+            .background {
+                Capsule().fill(Color.pink)
+            }
+            .environment(\.dynamicTypeSize, .large)
     }
 }

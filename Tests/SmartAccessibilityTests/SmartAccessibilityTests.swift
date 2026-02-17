@@ -64,9 +64,8 @@ struct ScaledMetricSizeTests {
     
     @Test("Validate TypographyScaler")
     func testTyporaphyScaler() {
-        let effectiveSize: DynamicTypeSize = .xSmall
-        let scaler: TypographyScaler = .init(dynamicTypeSize: effectiveSize)
-        let scaledHeight: CGFloat = scaler.make(with: .caption2)
+        let scaler: TypographyScaler = .init(dynamicTypeSize: .accessibility5)
+        let scaledHeight: CGFloat = scaler.make(with: .title2, scaledMetrics: 141)
         print("scaled height \(scaledHeight)")
         #expect(scaledHeight != 600.0)
     }

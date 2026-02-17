@@ -109,6 +109,7 @@ struct ScaledHeightViewModifier: ViewModifier {
         let h = baseFontSize * 2
         
         content
+            .padding(.horizontal)
             .frame(height: h)
             .frame(minWidth: h)
             .lineLimit(1)
@@ -118,15 +119,21 @@ struct ScaledHeightViewModifier: ViewModifier {
 struct SmartHeightViewModifier: ViewModifier {
     @Environment(\.accessibilityLimitedDynamicTypeSize) var limitedDynamicTypeSize
     @Environment(\.dynamicTypeSize) private var systemDynamicTypeSize
-    
+    @ScaledMetric private var scaledMetrics: CGFloat
     let textStyle: Font.TextStyle
+    
+    init(textStyle: Font.TextStyle) {
+        self.textStyle = textStyle
+        self._scaledMetrics = .init(wrappedValue: textStyle.idealBaseHeight, relativeTo: textStyle)
+    }
     
     func body(content: Content) -> some View {
         let effectiveSize = min(systemDynamicTypeSize, limitedDynamicTypeSize)
         let scaler: TypographyScaler = .init(dynamicTypeSize: effectiveSize)
-        let h = scaler.make(with: textStyle)
+        let h = scaler.make(with: textStyle, scaledMetrics: scaledMetrics)
         
         content
+            .accessibilityDampedPadding(16, relativeTo: textStyle)
             .frame(height: h)
             .frame(minWidth: h)
     }
