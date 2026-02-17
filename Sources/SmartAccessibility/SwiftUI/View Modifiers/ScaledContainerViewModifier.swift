@@ -74,17 +74,17 @@ public extension View {
     ///     .font(.title2.bold())
     ///     .foregroundStyle(.background)
     ///     .padding(.horizontal)
-    ///     .smartHeightContainer(textStyle: .title2)
+    ///     .dynamicHeightContainer(textStyle: .title2)
     ///     .background {
     ///         Capsule().fill(Color.pink)
     ///     }
     /// ```
     ///
     /// - Parameter textStyle: The` Font.TextStyle` applied to the text, used as the reference point for scaling the container.
-    func smartHeightContainer(
+    func dynamicHeightContainer(
         textStyle: Font.TextStyle
     ) -> some View {
-        self.modifier(SmartHeightViewModifier(textStyle: textStyle))
+        self.modifier(DynamicHeightViewModifier(textStyle: textStyle))
     }
 }
 
@@ -116,7 +116,7 @@ struct ScaledHeightViewModifier: ViewModifier {
     }
 }
 
-struct SmartHeightViewModifier: ViewModifier {
+struct DynamicHeightViewModifier: ViewModifier {
     @Environment(\.accessibilityLimitedDynamicTypeSize) var limitedDynamicTypeSize
     @Environment(\.dynamicTypeSize) private var systemDynamicTypeSize
     @ScaledMetric private var scaledMetrics: CGFloat

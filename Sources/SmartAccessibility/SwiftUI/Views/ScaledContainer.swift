@@ -61,7 +61,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Large Title")
                 .font(.largeTitle.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .largeTitle)
+                .dynamicHeightContainer(textStyle: .largeTitle)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -69,7 +69,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Title")
                 .font(.title.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .title)
+                .dynamicHeightContainer(textStyle: .title)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -77,7 +77,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Title2")
                 .font(.title2.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .title2)
+                .dynamicHeightContainer(textStyle: .title2)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -85,7 +85,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Title3")
                 .font(.title3.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .title3)
+                .dynamicHeightContainer(textStyle: .title3)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -93,7 +93,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Body")
                 .font(.body.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .body)
+                .dynamicHeightContainer(textStyle: .body)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -101,7 +101,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Headline")
                 .font(.headline.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .headline)
+                .dynamicHeightContainer(textStyle: .headline)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -109,7 +109,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Callout")
                 .font(.callout.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .callout)
+                .dynamicHeightContainer(textStyle: .callout)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -117,7 +117,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Subheadline")
                 .font(.subheadline.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .subheadline)
+                .dynamicHeightContainer(textStyle: .subheadline)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -125,7 +125,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Footnote")
                 .font(.footnote.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .footnote)
+                .dynamicHeightContainer(textStyle: .footnote)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -133,7 +133,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Caption")
                 .font(.caption.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .caption)
+                .dynamicHeightContainer(textStyle: .caption)
                 .background {
                     Capsule().fill(Color.pink)
                 }
@@ -141,7 +141,7 @@ public struct ScaledContainer<Container: View, Content: View>: View {
             Text("Caption2")
                 .font(.caption2.bold())
                 .foregroundStyle(.background)
-                .smartHeightContainer(textStyle: .caption2)
+                .dynamicHeightContainer(textStyle: .caption2)
                 .background {
                     Capsule().fill(Color.pink)
                 }
