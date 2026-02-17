@@ -49,13 +49,22 @@ public struct ScaledContainer<Container: View, Content: View>: View {
         }
         .environment(\.imageScale, .large)
         
-        ScaledContainer(baseFontSize: 22) {
-            Capsule()
-                .fill(Color.pink)
-        } content: {
-            Text("Edit")
-                .font(.system(size: 22))
-                .foregroundStyle(.background)
-        }
+        Text("Edit")
+            .font(.system(size: 22, weight: .medium))
+            .foregroundStyle(.background)
+            .padding(.horizontal)
+            .scaledHeightContainer(baseFontSize: 22)
+            .background {
+                Capsule().fill(Color.pink)
+            }
+        
+        Text("Done")
+            .font(.title2.bold())
+            .foregroundStyle(.background)
+            .padding(.horizontal)
+            .smartHeightContainer(textStyle: .title2)
+            .background {
+                Capsule().fill(Color.pink)
+            }
     }
 }

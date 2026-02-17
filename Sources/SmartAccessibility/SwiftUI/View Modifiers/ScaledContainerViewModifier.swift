@@ -42,15 +42,14 @@ public extension View {
     ///
     /// ### Example
     /// ```swift
-    /// ZStack {
-    ///     Capsule()
-    ///         .fill(Color.pink)
-    ///
-    ///     Text("Edit")
-    ///         .font(.system(size: 22))
-    ///         .foregroundStyle(.background)
-    /// }
-    /// .scaledHeightContainer(baseFontSize: 22)
+    /// Text("Edit")
+    ///     .font(.system(size: 22, weight: .medium))
+    ///     .foregroundStyle(.background)
+    ///     .padding(.horizontal)
+    ///     .scaledHeightContainer(baseFontSize: 22)
+    ///     .background {
+    ///         Capsule().fill(Color.pink)
+    ///     }
     /// ```
     ///
     /// - Parameter baseFontSize: The fixed font size applied to the text, used as the reference point for scaling the container.
@@ -60,9 +59,9 @@ public extension View {
         modifier(ScaledHeightViewModifier(baseFontSize: baseFontSize))
     }
     
-    /// Scales the view frame height proportionally according to the font size.
+    /// Scales the view frame height proportionally according to the font text style.
     ///
-    /// Use this modifier to maintain consistent proportions between a `Text` (configured with a fixed font size)
+    /// Use this modifier to maintain consistent proportions between a `Text` (configured with a fixed font text style)
     /// and its background container (e.g., a `Capsule` or `RoundedRectangle`).
     ///
     /// This is particularly useful in designs where the container must "hug" the text
@@ -71,20 +70,21 @@ public extension View {
     ///
     /// ### Example
     /// ```swift
-    /// ZStack {
-    ///     Capsule()
-    ///         .fill(Color.pink)
-    ///
-    ///     Text("Edit")
-    ///         .font(.title2)
-    ///         .foregroundStyle(.background)
-    /// }
-    /// .smartHeightContainer(source: .dynamyc(.title2))
+    /// Text("Done")
+    ///     .font(.title2.bold())
+    ///     .foregroundStyle(.background)
+    ///     .padding(.horizontal)
+    ///     .smartHeightContainer(textStyle: .title2)
+    ///     .background {
+    ///         Capsule().fill(Color.pink)
+    ///     }
     /// ```
     ///
-    /// - Parameter source: The` ScaleFontSource` applied to the text, used as the reference point for scaling the container.
-    func smartHightContainer(source: ScaleFontSource) -> some View {
-        self.modifier(SmartHeightViewModifier(source: source))
+    /// - Parameter textStyle: The` Font.TextStyle` applied to the text, used as the reference point for scaling the container.
+    func smartHeightContainer(
+        textStyle: Font.TextStyle
+    ) -> some View {
+        self.modifier(SmartHeightViewModifier(textStyle: textStyle))
     }
 }
 
@@ -119,19 +119,12 @@ struct SmartHeightViewModifier: ViewModifier {
     @Environment(\.accessibilityLimitedDynamicTypeSize) var limitedDynamicTypeSize
     @Environment(\.dynamicTypeSize) private var systemDynamicTypeSize
     
-    let source: ScaleFontSource
+    let textStyle: Font.TextStyle
     
     func body(content: Content) -> some View {
-        let h: CGFloat = {
-            switch source {
-            case .fixed(let size):
-                return size * 2
-            case .dynamic(let style):
-                let effectiveSize = min(systemDynamicTypeSize, limitedDynamicTypeSize)
-                let scaler: TypographyScaler = .init(dynamicTypeSize: effectiveSize)
-                return scaler.make(with: style)
-            }
-        }()
+        let effectiveSize = min(systemDynamicTypeSize, limitedDynamicTypeSize)
+        let scaler: TypographyScaler = .init(dynamicTypeSize: effectiveSize)
+        let h = scaler.make(with: textStyle)
         
         content
             .frame(height: h)
