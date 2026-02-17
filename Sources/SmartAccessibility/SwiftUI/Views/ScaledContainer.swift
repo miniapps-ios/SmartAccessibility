@@ -37,42 +37,109 @@ public struct ScaledContainer<Container: View, Content: View>: View {
 }
 
 #Preview {
-    VStack(spacing: 30) {
-        ScaledContainer(baseFontSize: 64) {
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color.pink)
-                .aspectRatio(1.0, contentMode: .fill)
-        } content: {
-            Image(systemName: "person.fill")
-                .font(.system(size: 64))
+    ScrollView {
+        VStack(spacing: 30) {
+            ScaledContainer(baseFontSize: 64) {
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(Color.pink)
+                    .aspectRatio(1.0, contentMode: .fill)
+            } content: {
+                Image(systemName: "person.fill")
+                    .font(.system(size: 64))
+                    .foregroundStyle(.background)
+            }
+            .environment(\.imageScale, .large)
+            
+            Text("Edit")
+                .font(.system(size: 22, weight: .medium))
                 .foregroundStyle(.background)
+                .scaledHeightContainer(baseFontSize: 22)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Large Title")
+                .font(.largeTitle.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .largeTitle)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Title")
+                .font(.title.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .title)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Title2")
+                .font(.title2.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .title2)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Title3")
+                .font(.title3.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .title3)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Body")
+                .font(.body.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .body)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Headline")
+                .font(.headline.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .headline)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Callout")
+                .font(.callout.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .callout)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Footnote")
+                .font(.footnote.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .footnote)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Caption")
+                .font(.caption.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .caption)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
+            
+            Text("Caption2")
+                .font(.caption2.bold())
+                .foregroundStyle(.background)
+                .smartHeightContainer(textStyle: .caption2)
+                .background {
+                    Capsule().fill(Color.pink)
+                }
         }
-        .environment(\.imageScale, .large)
-        
-        Text("Edit")
-            .font(.system(size: 22, weight: .medium))
-            .foregroundStyle(.background)
-            .scaledHeightContainer(baseFontSize: 22)
-            .background {
-                Capsule().fill(Color.pink)
-            }
-        
-        Text("Done")
-            .font(.title.bold())
-            .foregroundStyle(.background)
-            .smartHeightContainer(textStyle: .title)
-            .background {
-                Capsule().fill(Color.pink)
-            }
-            .environment(\.dynamicTypeSize, .accessibility5)
-        
-        Text("Continue")
-            .font(.caption2.bold())
-            .foregroundStyle(.background)
-            .smartHeightContainer(textStyle: .caption2)
-            .background {
-                Capsule().fill(Color.pink)
-            }
-            .environment(\.dynamicTypeSize, .large)
+        .frame(maxWidth: .infinity)
     }
+    .scrollIndicators(.hidden)
+    .environment(\.dynamicTypeSize, .large)
 }

@@ -3,7 +3,7 @@ import SwiftUI
 struct TypographyScaler: ScaleDynamicTypeSizeProtocol {
     internal static let squareRootRatio: CGFloat = 4.0
     internal static let largeRatio: CGFloat = 0.60
-    internal static let smallRatio: CGFloat = 0.50
+    internal static let smallRatio: CGFloat = 0.225
     
     let dynamicTypeSize: DynamicTypeSize
     
